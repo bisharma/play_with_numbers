@@ -1,0 +1,192 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="lib/seng560-arithmetic.js"> </script>
+</head>
+<body>
+  <h1> Calculator application </h1>
+<br>
+  <div>
+    <h2> What Operation Would you like to Perform? </h2>
+     <button id="add" class="operation"> Add </button>
+     <button id="subtract" class="operation"> Subtract</button>
+     <button id="divide" class="operation"> Divide</button>
+     <button id="multiply" class="operation">Multiply</button>
+     <button id="sqr" class="operation">Sqroot</button>
+     <button id="expo" class="operation">Expo</button>
+
+  </div>
+<br>
+ <div id="threenumber_para" class="form_sec">
+   First Number: <input id="firstnum" type="text" > </input>
+   Second Number: <input id="secondnum" type="text" > </input>
+   Base Number: <input id="basenum" type="text" placeholder="10"> </input>
+   </div>
+
+ <div id="sqrt_para" class="form_sec">
+   First Number: <input id="firstnum_sqr" type="text" > </input>
+   Base Number: <input id="basenum_sqr" type="text" placeholder="10" > </input>
+
+ </div>
+
+ <div id="exponent_para" class="form_sec">
+   First Number (Root): <input id="firstnum_expo" type="text" > </input>
+   Second Number(exponent): <input id="secondnum_expo" type="text" > </input>
+   Base Number: <input id="basenum_expo" type="text" placeholder="10"> </input>
+
+ </div>
+
+    <div id="calculate">
+      <br>
+     <button id="cal_add" class="cal_sec"> Calculate </button>
+     <button id="cal_subtract" class="cal_sec">  Calculate</button>
+     <button id="cal_divide" class="cal_sec">  Calculate</button>
+     <button id="cal_multiply" class="cal_sec">Calculate</button>
+     <button id="cal_sqr" class="cal_sec">Calculate</button>
+     <button id="cal_expo" class="cal_sec">Calculate</button>
+
+   </div>
+
+   <div id="result">
+     <hr>
+   <h2>The Answer is : <span id="calc_ans"> </span></h2>
+     <hr>
+    </div>
+
+
+<script>
+$(document).ready(function(){
+hideall_form();
+$('.operation').click(function(){
+hideall_form();
+  var clicked_id= this.id;
+  switch(clicked_id){
+    case 'add':{
+      $('#threenumber_para').show();
+      $('#cal_add').show();
+    }break;
+    case 'subtract':{
+      $('#threenumber_para').show();
+      $('#cal_subtract').show();
+    }break;
+    case 'divide':{
+      $('#threenumber_para').show();
+      $('#cal_divide').show();
+    }break;
+    case 'multiply':{
+      $('#threenumber_para').show();
+      $('#cal_multiply').show();
+    }break;
+    case 'sqr':{
+      $('#sqrt_para').show();
+      $('#cal_sqr').show();
+    }break;
+    case 'expo':{
+      $('#exponent_para').show();
+      $('#cal_expo').show();
+    }break;
+
+  }
+
+});
+
+// calculating
+
+$('.cal_sec').click(function(){
+
+   var clicked_id= this.id;
+   switch(clicked_id){
+     case 'cal_add':{
+       var first_para = $('#firstnum').val();
+       var second_para=$('#secondnum').val();
+       var third_para= $('#basenum').val();
+       var calculation= seng560.add(isNaN(parseInt(first_para))?first_para:parseInt(first_para),
+                                        isNaN(parseInt(second_para))?second_para:parseInt(second_para),
+                                        parseInt(third_para) );
+       $('#calc_ans').text(calculation);
+        $('#result').show();
+     }break;
+
+     case 'cal_add':{
+       var first_para = $('#firstnum').val();
+       var second_para=$('#secondnum').val();
+       var third_para= $('#basenum').val();
+       var calculation= seng560.add(isNaN(parseInt(first_para))?first_para:parseInt(first_para),
+                                        isNaN(parseInt(second_para))?second_para:parseInt(second_para),
+                                        parseInt(third_para) );
+       $('#calc_ans').text(calculation);
+       $('#result').show();
+     }break;
+
+     case 'cal_subtract':{
+       var first_para = $('#firstnum').val();
+       var second_para=$('#secondnum').val();
+       var third_para= $('#basenum').val();
+       var calculation= seng560.subtract(isNaN(parseInt(first_para))?first_para:parseInt(first_para),
+                                        isNaN(parseInt(second_para))?second_para:parseInt(second_para),
+                                        parseInt(third_para) );
+       $('#calc_ans').text(calculation);
+       $('#result').show();
+     }break;
+
+     case 'cal_divide':{
+       var first_para = $('#firstnum').val();
+       var second_para=$('#secondnum').val();
+       var third_para= $('#basenum').val();
+       var calculation= seng560.divide(isNaN(parseInt(first_para))?first_para:parseInt(first_para),
+                                        isNaN(parseInt(second_para))?second_para:parseInt(second_para),
+                                        parseInt(third_para) );
+       $('#calc_ans').text(calculation);
+       $('#result').show();
+     }break;
+
+     case 'cal_multiply':{
+       var first_para = $('#firstnum').val();
+       var second_para=$('#secondnum').val();
+       var third_para= $('#basenum').val();
+       var calculation= seng560.multiply(isNaN(parseInt(first_para))?first_para:parseInt(first_para),
+                                        isNaN(parseInt(second_para))?second_para:parseInt(second_para),
+                                        parseInt(third_para) );
+       $('#calc_ans').text(calculation);
+       $('#result').show();
+     }break;
+
+     case 'cal_sqr':{
+       var first_para = $('#firstnum_sqr').val();
+       var third_para= $('#basenum_sqr').val();
+       var calculation= seng560.sqrt(isNaN(parseInt(first_para))?first_para:parseInt(first_para),
+                                        parseInt(third_para) );
+       $('#calc_ans').text(calculation);
+       $('#result').show();
+     }break;
+
+     case 'cal_expo':{
+       var first_para = $('#firstnum_expo').val();
+       var second_para=$('#secondnum_expo').val();
+       var third_para= $('#basenum_expo').val();
+       var calculation= seng560.exponent(isNaN(parseInt(first_para))?first_para:parseInt(first_para),
+                                        isNaN(parseInt(second_para))?second_para:parseInt(second_para),
+                                        parseInt(third_para) );
+       $('#calc_ans').text(calculation);
+       $('#result').show();
+     }break;
+   }
+});
+
+});
+
+function hideall_form(){
+  $('.form_sec').hide();
+  $('.cal_sec').hide();
+  $('#result').hide();
+
+}
+</script>
+
+
+</body>
+</html>
